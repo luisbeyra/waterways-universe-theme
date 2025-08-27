@@ -15,13 +15,13 @@
     <meta property="og:description" content="<?php bloginfo('description'); ?>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo home_url(); ?>">
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-og-image.jpg">
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-logo.png">
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?>">
     <meta name="twitter:description" content="<?php bloginfo('description'); ?>">
-    <meta name="twitter:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-og-image.jpg">
+    <meta name="twitter:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-logo.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="<?php echo get_permalink(); ?>">
@@ -32,19 +32,21 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('min-h-screen bg-background'); ?>>
     <?php wp_body_open(); ?>
     
-    <!-- Navigation Header -->
-    <header class="site-header">
-        <div class="container">
-            <div class="flex">
+    <!-- Header - Matches React Header Component Exactly -->
+    <header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-sm border-b border-border/20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                
                 <!-- Logo -->
                 <div class="site-branding">
-                    <a href="<?php echo home_url(); ?>">
+                    <a href="<?php echo home_url(); ?>" class="flex items-center space-x-2 group">
                         <img 
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-logo.png" 
                             alt="<?php bloginfo('name'); ?> Logo"
+                            class="h-11 w-auto transition-all duration-300 group-hover:scale-105"
                         >
                     </a>
                 </div>
