@@ -1,66 +1,76 @@
 <?php
 /**
  * Waterways Theme - Main Index Template
- * 
- * This template displays the homepage with hero section and handles other content pages
  */
 
 get_header(); ?>
 
 <main id="main-content" class="site-main">
-    <?php 
-    // Show hero section on homepage OR if no specific content is set
-    if (is_home() || is_front_page() || (is_page() && get_the_title() == 'Home')) {
-        // Force include the hero section template part
-        get_template_part('template-parts/hero-section');
-    } else {
-        // For other pages, show standard content with proper spacing
-        if (have_posts()) : ?>
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-32">
+    <?php if (is_home() || is_front_page()) : ?>
+        <!-- Homepage Content -->
+        <div class="homepage-content">
+            <div class="container">
+                <!-- Logo Section -->
+                <div class="logo-section">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-logo.png" 
+                         alt="Waterways Logo" 
+                         class="main-logo">
+                </div>
+
+                <!-- Main Description -->
+                <div class="main-description">
+                    <p>A revolutionary sci-fi series set in a fictional Florida K-12 school, seamlessly integrating entertainment with STEM education.</p>
+                </div>
+
+                <!-- Content Sections -->
+                <div class="content-sections">
+                    <!-- Educational Section -->
+                    <div class="content-section">
+                        <h3>Educational</h3>
+                        <ul>
+                            <li>Academica Partnership</li>
+                            <li>STEM Curriculum</li>
+                            <li>Colēgia Platform</li>
+                            <li>Classroom Resources</li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="content-section">
+                        <h3>Contact</h3>
+                        <div class="contact-info">
+                            <p><span class="contact-icon">📧</span> info@waterwaysmiami.com</p>
+                            <p><span class="contact-icon">📞</span> +1 (305) 555-0123</p>
+                            <p><span class="contact-icon">📍</span> Miami-Dade County, Florida</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php else : ?>
+        <!-- Other Pages Content -->
+        <div class="container page-content">
+            <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post(); ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class('max-w-4xl mx-auto'); ?>>
-                        <header class="entry-header text-center mb-12">
-                            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-                                <?php the_title(); ?>
-                            </h1>
-                            <?php if (has_excerpt()) : ?>
-                                <div class="text-xl text-muted-foreground max-w-3xl mx-auto">
-                                    <?php the_excerpt(); ?>
-                                </div>
-                            <?php endif; ?>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                        <header class="entry-header">
+                            <h1 class="entry-title"><?php the_title(); ?></h1>
                         </header>
                         
-                        <div class="entry-content prose prose-lg max-w-none">
-                            <?php
-                            the_content();
-                            
-                            wp_link_pages(array(
-                                'before' => '<div class="page-links mt-8">',
-                                'after'  => '</div>',
-                            ));
-                            ?>
+                        <div class="entry-content">
+                            <?php the_content(); ?>
                         </div>
                     </article>
                 <?php endwhile; ?>
-                
-                <?php
-                // Pagination
-                the_posts_navigation();
-                ?>
-            </div>
-        <?php else : ?>
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-32">
-                <div class="text-center max-w-2xl mx-auto">
-                    <h1 class="text-3xl font-bold mb-4 text-foreground">Nothing Found</h1>
-                    <p class="text-muted-foreground mb-8">It seems we can't find what you're looking for. Perhaps searching can help.</p>
-                    <a href="<?php echo home_url(); ?>" class="btn btn-primary bg-gradient-ocean hover:shadow-[var(--shadow-glow)] px-8 py-3">
-                        Return Home
-                    </a>
+            <?php else : ?>
+                <div class="no-content">
+                    <h1>Nothing Found</h1>
+                    <p>It seems we can't find what you're looking for.</p>
+                    <a href="<?php echo home_url(); ?>" class="btn-home">Return Home</a>
                 </div>
-            </div>
-        <?php endif;
-    }
-    ?>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
 </main>
 
 <?php get_footer(); ?>

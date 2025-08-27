@@ -23,63 +23,34 @@ html, body {
   padding: 0;
 }
 
-/* WATERWAYS Design System - Florida Mangrove & Aquatic Theme */
+/* WATERWAYS Design System - Clean Dark Theme */
 :root {
-  /* Water & Mangrove Inspired Palette - Dark Theme (matches React) */
-  --background: 220 25% 8%;
-  --foreground: 190 25% 95%;
+  /* Dark theme matching the actual website */
+  --background: 218 25% 12%;
+  --foreground: 190 25% 85%;
 
-  --card: 220 20% 12%;
-  --card-foreground: 190 25% 95%;
+  --card: 220 20% 15%;
+  --card-foreground: 190 25% 85%;
 
-  --popover: 220 20% 12%;
-  --popover-foreground: 190 25% 95%;
+  /* Primary - Waterways Teal */
+  --primary: 185 55% 45%;
+  --primary-foreground: 220 25% 12%;
 
-  /* Primary - Deep Ocean Teal */
-  --primary: 185 65% 35%;
-  --primary-foreground: 190 25% 95%;
-  --primary-glow: 185 65% 45%;
+  /* Secondary */
+  --secondary: 165 20% 30%;
+  --secondary-foreground: 190 25% 85%;
 
-  /* Secondary - Mangrove Sage */
-  --secondary: 165 25% 25%;
-  --secondary-foreground: 190 25% 95%;
+  /* Muted */
+  --muted: 210 15% 20%;
+  --muted-foreground: 190 15% 60%;
 
-  /* Muted - Deep Waters */
-  --muted: 210 15% 15%;
-  --muted-foreground: 190 15% 65%;
+  /* Accent */
+  --accent: 195 75% 50%;
+  --accent-foreground: 220 25% 12%;
 
-  /* Accent - Biscayne Bay Blue */
-  --accent: 195 85% 45%;
-  --accent-foreground: 220 25% 8%;
-
-  /* Destructive */
-  --destructive: 0 62.8% 50%;
-  --destructive-foreground: 190 25% 95%;
-
-  /* Borders & Inputs */
+  /* Borders */
   --border: 190 15% 25%;
   --input: 190 15% 20%;
-  --ring: 185 65% 45%;
-
-  /* Custom Waterways Colors */
-  --coral: 15 85% 65%;
-  --seaweed: 165 40% 35%;
-  --sand: 45 25% 75%;
-  --deep-blue: 210 85% 25%;
-  
-  /* Gradients - ESSENTIAL FOR DESIGN */
-  --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--deep-blue)));
-  --gradient-mangrove: linear-gradient(180deg, hsl(var(--seaweed)), hsl(var(--secondary)));
-  --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--primary)) 50%, hsl(var(--deep-blue)) 100%);
-  
-  /* Shadows - CRITICAL FOR DEPTH */
-  --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
-  --shadow-deep: 0 20px 60px -10px hsl(var(--primary) / 0.4);
-  --shadow-card: 0 10px 30px -5px hsl(var(--primary) / 0.2);
-  
-  /* Animations */
-  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-wave: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   --radius: 0.5rem;
 }
@@ -667,4 +638,277 @@ a:hover {
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
   box-shadow: var(--shadow-glow);
+}
+
+/* ===== WATERWAYS HOMEPAGE STYLES ===== */
+
+/* Header Styles */
+.site-header {
+  background: hsl(var(--background));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  height: 40px;
+  width: auto;
+}
+
+.main-navigation {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .main-navigation {
+    display: block;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.nav-menu li a {
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover {
+  color: hsl(var(--accent));
+  background: hsl(var(--card));
+}
+
+.btn-trailer {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-trailer:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.mobile-menu-toggle {
+  background: none;
+  border: none;
+  color: hsl(var(--foreground));
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background: hsl(var(--foreground));
+  transition: all 0.3s ease;
+}
+
+/* Homepage Content Styles */
+.homepage-content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 0 4rem 0;
+}
+
+.homepage-content .container {
+  text-align: center;
+}
+
+.logo-section {
+  margin-bottom: 3rem;
+}
+
+.main-logo {
+  height: 120px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.main-description {
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-description p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+}
+
+.content-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .content-sections {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.content-section {
+  text-align: left;
+}
+
+.content-section h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 1.5rem;
+}
+
+.content-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.content-section li {
+  color: hsl(var(--muted-foreground));
+  padding: 0.5rem 0;
+  border-bottom: 1px solid hsl(var(--border));
+  font-size: 1rem;
+}
+
+.content-section li:last-child {
+  border-bottom: none;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.contact-info p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+}
+
+/* Footer Styles */
+.site-footer {
+  background: hsl(var(--background));
+  border-top: 1px solid hsl(var(--border));
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-text {
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links a {
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: hsl(var(--accent));
+}
+
+/* Page Content Styles */
+.page-content {
+  padding: 6rem 0 4rem 0;
+  min-height: 50vh;
+}
+
+.entry-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.entry-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+}
+
+.entry-content {
+  max-width: 800px;
+  margin: 0 auto;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+}
+
+.no-content {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.btn-home {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 0.75rem 2rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }
