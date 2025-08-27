@@ -9,9 +9,9 @@ get_header(); ?>
 
 <main id="main-content" class="site-main">
     <?php 
-    // Show hero section only on homepage
-    if (is_home() || is_front_page()) {
-        // Include the hero section template part
+    // Show hero section on homepage OR if no specific content is set
+    if (is_home() || is_front_page() || (is_page() && get_the_title() == 'Home')) {
+        // Force include the hero section template part
         get_template_part('template-parts/hero-section');
     } else {
         // For other pages, show standard content with proper spacing

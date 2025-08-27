@@ -99,7 +99,14 @@ body {
   min-height: 100vh;
 }
 
-/* Container */
+/* Fix WordPress front page hero display */
+.home .site-main,
+.page-template-default .site-main,
+.front-page .site-main {
+  padding-top: 0 !important;
+}
+
+/* Utility Classes */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -411,6 +418,24 @@ body {
   animation: glow 2s ease-in-out infinite;
 }
 
+/* Ensure hero section displays properly */
+.hero-section {
+  min-height: 100vh !important;
+  display: flex !important;
+  position: relative !important;
+}
+
+/* Fix icon sizes */
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon-lg {
+  width: 2rem;
+  height: 2rem;
+}
+
 /* BUTTON STYLES */
 .btn {
   display: inline-flex;
@@ -475,15 +500,18 @@ body {
 
 /* Card Styles */
 .wp-card {
-  background-color: hsl(var(--card));
+  background-color: hsl(var(--card) / 0.8);
   border: 1px solid hsl(var(--border));
   border-radius: 0.5rem;
   transition: var(--transition-smooth);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
 }
 
 .wp-card:hover {
   border-color: hsl(var(--accent));
   box-shadow: var(--shadow-card);
+  transform: scale(1.05);
 }
 
 /* Shadow utilities */

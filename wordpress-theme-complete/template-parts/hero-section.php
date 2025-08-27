@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+<section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
          style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-background.jpg')">
@@ -36,9 +36,10 @@
                 Where Science Fiction Meets STEM Education in the Heart of Florida's Mangrove Ecosystem
             </p>
             <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
-                <a href="#" class="btn btn-lg bg-gradient-ocean hover:shadow-[var(--shadow-glow)] text-lg px-8 py-4 animate-glow">
+                <a href="#" class="btn btn-lg btn-primary bg-gradient-ocean hover:shadow-glow text-lg px-8 py-4 animate-glow">
                     <svg class="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.5a2.5 2.5 0 110 5H9V10z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     Watch Trailer
                 </a>
@@ -58,7 +59,7 @@
                     'image' => 'tv-show-hero.jpg',
                     'link' => home_url('/tv-show'),
                     'gradient' => 'from-primary to-accent',
-                    'icon' => 'M14.828 14.828a4 4 0 01-5.656 0M9 10h1.5a2.5 2.5 0 110 5H9V10z'
+                    'icon' => 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
                 ),
                 array(
                     'title' => 'Games',
@@ -66,7 +67,7 @@
                     'image' => 'games-hero.jpg',
                     'link' => home_url('/games'),
                     'gradient' => 'from-seaweed to-primary',
-                    'icon' => 'M14.828 14.828a4 4 0 01-5.656 0M9 10h1.5a2.5 2.5 0 110 5H9V10z'
+                    'icon' => 'M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 000 1.788l4 2.001V13a1 1 0 00-1.447-.894l-4 2A1 1 0 0011 15v2z M7 7a1 1 0 100-2H5a1 1 0 000 2h2z M7 11a1 1 0 100-2H5a1 1 0 000 2h2z M7 15a1 1 0 100-2H5a1 1 0 000 2h2z'
                 ),
                 array(
                     'title' => 'Graphic Novel',
@@ -88,7 +89,7 @@
             
             foreach ($hero_sections as $index => $section) : ?>
                 <a href="<?php echo esc_url($section['link']); ?>" class="group">
-                    <div class="wp-card relative overflow-hidden h-80 bg-card/80 backdrop-blur-sm border-border hover:border-accent transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-card)] animate-slide-up">
+                    <div class="wp-card relative overflow-hidden h-80 bg-card/80 backdrop-blur-sm border-border hover:border-accent transition-all duration-500 transform hover:scale-105 hover:shadow-card animate-slide-up">
                         <!-- Background Image -->
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                              style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/<?php echo $section['image']; ?>')">
