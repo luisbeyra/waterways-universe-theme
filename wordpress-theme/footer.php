@@ -1,7 +1,7 @@
     <!-- Site Footer -->
     <footer id="site-footer" class="site-footer bg-card border-t border-border">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- Brand Column -->
                 <div class="footer-brand space-y-4">
@@ -9,9 +9,9 @@
                         <img 
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" 
                             alt="<?php bloginfo('name'); ?> Logo" 
-                            class="h-8 w-auto"
+                            class="h-13 w-auto"
                             width="auto" 
-                            height="32"
+                            height="52"
                         >
                         <span class="text-xl font-bold bg-gradient-ocean bg-clip-text text-transparent">
                             <?php bloginfo('name'); ?>
@@ -50,19 +50,6 @@
                             </a>
                         <?php endif; ?>
                     </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="footer-links">
-                    <h3 class="text-lg font-semibold mb-4 text-foreground">Quick Links</h3>
-                    <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'footer',
-                        'menu_class' => 'footer-menu space-y-2',
-                        'container' => false,
-                        'fallback_cb' => 'waterways_footer_menu',
-                    ));
-                    ?>
                 </div>
 
                 <!-- Educational Partners -->

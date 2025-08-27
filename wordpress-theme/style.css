@@ -236,6 +236,14 @@ body {
 }
 
 /* 
+ * Navigation Menu Styles
+ */
+.nav-menu a,
+.mobile-nav-menu a {
+  text-transform: uppercase;
+}
+
+/* 
  * Animations
  */
 @keyframes wave {

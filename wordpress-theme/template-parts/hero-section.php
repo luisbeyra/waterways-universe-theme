@@ -23,9 +23,13 @@
     <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <!-- Main Heading -->
         <div class="text-center mb-16">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-hero bg-clip-text text-transparent animate-slide-up">
-                <?php echo get_bloginfo('name'); ?>
-            </h1>
+            <div class="flex items-center justify-center mb-6">
+                <img 
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" 
+                    alt="<?php bloginfo('name'); ?> Logo" 
+                    class="h-24 w-auto animate-slide-up"
+                >
+            </div>
             <p class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up">
                 <?php 
                 $hero_description = get_theme_mod('hero_description', 'Where Science Fiction Meets STEM Education in the Heart of Florida\'s Mangrove Ecosystem');

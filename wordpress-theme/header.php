@@ -46,9 +46,9 @@
                         <img 
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" 
                             alt="<?php bloginfo('name'); ?> Logo" 
-                            class="h-8 w-auto transition-all duration-300 group-hover:scale-105"
+                            class="h-14 w-auto transition-all duration-300 group-hover:scale-105 uppercase"
                             width="auto" 
-                            height="32"
+                            height="56"
                         >
                         <span class="text-xl font-bold bg-gradient-ocean bg-clip-text text-transparent">
                             <?php bloginfo('name'); ?>
