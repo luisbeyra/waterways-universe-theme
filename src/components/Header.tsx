@@ -40,7 +40,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            {navigation.map(item => <Link key={item.name} to={item.href} className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-card hover:text-accent ${isActive(item.href) ? 'bg-primary text-primary-foreground shadow-[var(--shadow-glow)]' : 'text-foreground hover:text-accent'}`}>
+            {navigation.map(item => <Link key={item.name} to={item.href} className={`px-4 py-2 rounded-md text-sm font-medium uppercase transition-all duration-300 hover:bg-card hover:text-accent ${isActive(item.href) ? 'bg-primary text-primary-foreground shadow-[var(--shadow-glow)]' : 'text-foreground hover:text-accent'}`}>
                 {item.name}
               </Link>)}
           </nav>
@@ -64,7 +64,7 @@ const Header = () => {
       {/* Mobile Navigation Menu */}
       {isMenuOpen && <div className="md:hidden bg-transparent backdrop-blur-sm border-t border-border/20">
           <div className="px-4 pt-2 pb-4 space-y-1">
-            {navigation.map(item => <Link key={item.name} to={item.href} className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${isActive(item.href) ? 'bg-primary text-primary-foreground' : 'text-foreground hover:bg-card hover:text-accent'}`} onClick={() => setIsMenuOpen(false)}>
+            {navigation.map(item => <Link key={item.name} to={item.href} className={`block px-3 py-2 rounded-md text-base font-medium uppercase transition-all duration-300 ${isActive(item.href) ? 'bg-primary text-primary-foreground' : 'text-foreground hover:bg-card hover:text-accent'}`} onClick={() => setIsMenuOpen(false)}>
                 {item.name}
               </Link>)}
             <div className="pt-2">
