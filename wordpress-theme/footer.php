@@ -17,8 +17,7 @@
                         ?>
                     </div>
                     <p class="text-muted-foreground text-sm leading-relaxed">
-                        A revolutionary sci-fi series set in a fictional Florida K-12 school, 
-                        seamlessly integrating entertainment with STEM education.
+                        <?php echo esc_html(get_theme_mod('footer_description', 'A revolutionary sci-fi series set in a fictional Florida K-12 school, seamlessly integrating entertainment with STEM education.')); ?>
                     </p>
                     <div class="flex space-x-4">
                         <?php if (get_theme_mod('facebook_url')) : ?>

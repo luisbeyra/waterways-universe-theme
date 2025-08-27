@@ -28,6 +28,7 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-logo.png" as="image">
+    <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/images/hero-background.jpg" as="image">
     
     <?php wp_head(); ?>
 </head>
@@ -70,7 +71,7 @@
                         $is_active = ($current_url === rtrim($url, '/')) || (rtrim($current_url, '/') === rtrim($url, '/'));
                         if ($name === 'Home' && (is_home() || is_front_page())) $is_active = true;
                         
-                        $active_class = $is_active ? 'bg-primary text-primary-foreground shadow-[var(--shadow-glow)]' : 'text-foreground hover:text-accent';
+                        $active_class = $is_active ? 'bg-primary text-primary-foreground shadow-glow' : 'text-foreground hover:text-accent';
                         
                         echo '<a href="' . esc_url($url) . '" class="px-3 py-2 rounded-md text-base font-medium uppercase transition-all duration-300 hover:bg-card hover:text-accent ' . $active_class . '">' . esc_html($name) . '</a>';
                     }
@@ -79,7 +80,7 @@
 
                 <!-- CTA Button -->
                 <div class="hidden md:block">
-                    <a href="<?php echo home_url('/tv-show/'); ?>" class="btn btn-primary bg-gradient-ocean hover:shadow-[var(--shadow-glow)] transition-all duration-300 inline-flex items-center px-4 py-2 rounded-md text-sm font-medium">
+                    <a href="<?php echo home_url('/tv-show/'); ?>" class="btn btn-primary bg-gradient-ocean hover:shadow-glow transition-all duration-300 inline-flex items-center px-4 py-2 rounded-md text-sm font-medium">
                         Watch Trailer
                     </a>
                 </div>
@@ -112,7 +113,7 @@
                 }
                 ?>
                 <div class="pt-2">
-                    <a href="<?php echo home_url('/tv-show/'); ?>" class="w-full bg-gradient-ocean hover:shadow-[var(--shadow-glow)] transition-all duration-300 inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-white">
+                    <a href="<?php echo home_url('/tv-show/'); ?>" class="w-full bg-gradient-ocean hover:shadow-glow transition-all duration-300 inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-white">
                         Watch Trailer
                     </a>
                 </div>
