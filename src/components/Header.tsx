@@ -29,7 +29,7 @@ const Header = () => {
     href: '/contact'
   }];
   const isActive = (href: string) => location.pathname === href;
-  return <header className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-border">
+  return <header className="fixed top-0 w-full z-50 bg-transparent backdrop-blur-sm border-b border-border/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -62,7 +62,7 @@ const Header = () => {
       </div>
 
       {/* Mobile Navigation Menu */}
-      {isMenuOpen && <div className="md:hidden bg-background/98 backdrop-blur-md border-t border-border">
+      {isMenuOpen && <div className="md:hidden bg-transparent backdrop-blur-sm border-t border-border/20">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navigation.map(item => <Link key={item.name} to={item.href} className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${isActive(item.href) ? 'bg-primary text-primary-foreground' : 'text-foreground hover:bg-card hover:text-accent'}`} onClick={() => setIsMenuOpen(false)}>
                 {item.name}
