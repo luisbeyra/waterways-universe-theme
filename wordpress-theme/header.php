@@ -57,11 +57,11 @@
                 </div>
 
                 <!-- Main Navigation -->
-                <nav id="main-navigation" class="main-navigation hidden md:flex items-center space-x-1">
+                <nav id="main-navigation" class="main-navigation hidden md:flex items-center space-x-0">
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'primary',
-                        'menu_class' => 'nav-menu flex space-x-1',
+                        'menu_class' => 'nav-menu flex space-x-0',
                         'container' => false,
                         'fallback_cb' => 'waterways_default_menu',
                     ));

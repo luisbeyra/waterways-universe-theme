@@ -243,6 +243,23 @@ body {
   text-transform: uppercase;
 }
 
+.nav-menu a {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: var(--transition-smooth);
+}
+
+.mobile-nav-menu a {
+  padding: 0.5rem 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: var(--transition-smooth);
+  display: block;
+}
+
 /* 
  * Animations
  */
