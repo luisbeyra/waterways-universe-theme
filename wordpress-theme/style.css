@@ -1,0 +1,319 @@
+/*
+Theme Name: Waterways
+Description: A modern, responsive WordPress theme for the Waterways TV series website. Features a professional header with navigation, hero section with 4 main areas (TV Show, Games, Graphic Novel, Lessons), and comprehensive STEM educational content. Designed with Florida mangrove ecosystem themes using beautiful water-inspired colors and animations.
+Author: Waterways Miami
+Version: 1.0.0
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: waterways
+Tags: education, sci-fi, stem, responsive, custom-header, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme is designed specifically for the Waterways educational TV series and gaming ecosystem.
+*/
+
+/* 
+ * Import Tailwind CSS - Main styling framework
+ */
+@import url('./assets/css/tailwind.css');
+
+/* 
+ * Waterways Design System - Florida Mangrove & Aquatic Theme
+ * All colors are defined in HSL format for consistency
+ */
+:root {
+  /* Water & Mangrove Inspired Palette */
+  --background: 220 25% 8%;
+  --foreground: 190 25% 95%;
+  --card: 220 20% 12%;
+  --card-foreground: 190 25% 95%;
+  --popover: 220 20% 12%;
+  --popover-foreground: 190 25% 95%;
+  
+  /* Primary - Deep Ocean Teal */
+  --primary: 185 65% 35%;
+  --primary-foreground: 190 25% 95%;
+  --primary-glow: 185 65% 45%;
+  
+  /* Secondary - Mangrove Sage */
+  --secondary: 165 25% 25%;
+  --secondary-foreground: 190 25% 95%;
+  
+  /* Muted - Deep Waters */
+  --muted: 210 15% 15%;
+  --muted-foreground: 190 15% 65%;
+  
+  /* Accent - Biscayne Bay Blue */
+  --accent: 195 85% 45%;
+  --accent-foreground: 220 25% 8%;
+  
+  /* Destructive */
+  --destructive: 0 62.8% 50%;
+  --destructive-foreground: 190 25% 95%;
+  
+  /* Borders & Inputs */
+  --border: 190 15% 25%;
+  --input: 190 15% 20%;
+  --ring: 185 65% 45%;
+  
+  /* Custom Waterways Colors */
+  --coral: 15 85% 65%;
+  --seaweed: 165 40% 35%;
+  --sand: 45 25% 75%;
+  --deep-blue: 210 85% 25%;
+  
+  /* Gradients */
+  --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--deep-blue)));
+  --gradient-mangrove: linear-gradient(180deg, hsl(var(--seaweed)), hsl(var(--secondary)));
+  --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--primary)) 50%, hsl(var(--deep-blue)) 100%);
+  
+  /* Shadows */
+  --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+  --shadow-deep: 0 20px 60px -10px hsl(var(--primary) / 0.4);
+  --shadow-card: 0 10px 30px -5px hsl(var(--primary) / 0.2);
+  
+  /* Animations */
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-wave: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 
+ * Base Styles
+ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+ * WordPress Specific Styles
+ */
+.wp-block-image {
+  margin-bottom: 1.5rem;
+}
+
+.wp-block-image img {
+  height: auto;
+  max-width: 100%;
+}
+
+.wp-caption {
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+}
+
+.wp-caption img {
+  display: block;
+  margin: 0 auto;
+}
+
+.wp-caption-text {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* 
+ * Accessibility
+ */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: hsl(var(--background));
+  border: 2px solid hsl(var(--accent));
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px hsl(var(--accent) / 0.6);
+  clip: auto !important;
+  clip-path: none;
+  color: hsl(var(--foreground));
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+/* 
+ * Skip Link
+ */
+.skip-link {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+.skip-link:focus {
+  left: 6px;
+  position: fixed;
+  top: 7px;
+  z-index: 999999;
+}
+
+/* 
+ * Alignments
+ */
+.alignleft {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.alignright {
+  float: right;
+  margin-left: 1.5rem;  
+  margin-bottom: 1.5rem;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+}
+
+/* 
+ * Comments
+ */
+.comment-content a {
+  word-wrap: break-word;
+}
+
+.bypostauthor {
+  display: block;
+}
+
+/* 
+ * Waterways Custom Classes
+ */
+.bg-gradient-ocean {
+  background: var(--gradient-ocean);
+}
+
+.bg-gradient-mangrove {
+  background: var(--gradient-mangrove);
+}
+
+.bg-gradient-hero {
+  background: var(--gradient-hero);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.transition-smooth {
+  transition: var(--transition-smooth);
+}
+
+/* 
+ * Animations
+ */
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6); }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-wave { animation: wave 3s ease-in-out infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-glow { animation: glow 2s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.6s ease-out; }
+
+/* 
+ * Responsive Design
+ */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+}
+
+/* 
+ * Print Styles
+ */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+  
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
