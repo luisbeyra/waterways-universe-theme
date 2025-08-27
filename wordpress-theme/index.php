@@ -10,28 +10,26 @@ get_header(); ?>
 
 <main id="main-content" class="site-main">
     <?php 
-    // Include hero section with 4 main areas
-    get_template_part('template-parts/hero', 'section'); 
-    
-    // Include additional sections if on homepage
+    // Show hero section only on homepage - matching React version
     if (is_home() || is_front_page()) {
-        get_template_part('template-parts/services', 'grid');
-        get_template_part('template-parts/about', 'section');
-        get_template_part('template-parts/testimonials', 'slider');
-        get_template_part('template-parts/contact', 'form');
+        get_template_part('template-parts/hero', 'section');
+    } else {
+        // For other pages, show standard content
+        if (have_posts()) :
+            echo '<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-32">';
+            while (have_posts()) : the_post();
+                get_template_part('template-parts/content', get_post_type());
+            endwhile;
+            
+            // Pagination
+            the_posts_navigation();
+            echo '</div>';
+        else :
+            echo '<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-32">';
+            get_template_part('template-parts/content', 'none');
+            echo '</div>';
+        endif;
     }
-    
-    // Standard WordPress loop for other content
-    if (have_posts()) :
-        while (have_posts()) : the_post();
-            get_template_part('template-parts/content', get_post_type());
-        endwhile;
-        
-        // Pagination
-        the_posts_navigation();
-    else :
-        get_template_part('template-parts/content', 'none');
-    endif;
     ?>
 </main>
 

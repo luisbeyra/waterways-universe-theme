@@ -467,6 +467,64 @@ body {
   }
 }
 
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  background-image: url('./assets/images/hero-background.jpg');
+}
+
+.bg-gradient-ocean {
+  background: var(--gradient-ocean);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+/* Gradient Classes */
+.from-primary { --tw-gradient-from: hsl(var(--primary)); }
+.to-accent { --tw-gradient-to: hsl(var(--accent)); }
+.from-seaweed { --tw-gradient-from: hsl(var(--seaweed)); }
+.to-primary { --tw-gradient-to: hsl(var(--primary)); }
+.from-coral { --tw-gradient-from: hsl(var(--coral)); }
+.from-accent { --tw-gradient-from: hsl(var(--accent)); }
+.to-deep-blue { --tw-gradient-to: hsl(var(--deep-blue)); }
+.bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-to), var(--tw-gradient-from)); }
+
+/* Button Styles */
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid hsl(var(--accent));
+  color: hsl(var(--accent));
+}
+
+.btn-outline:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* Hero Grid */
+.hero-grid .hero-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-card:hover {
+  text-decoration: none;
+}
+
 /* Animations */
 @keyframes wave {
   0%, 100% { transform: translateY(0); }
@@ -492,6 +550,11 @@ body {
 .animate-float { animation: float 4s ease-in-out infinite; }
 .animate-glow { animation: glow 2s ease-in-out infinite; }
 .animate-slide-up { animation: slide-up 0.6s ease-out; }
+
+/* Particle Animation */
+.particle {
+  animation: float 4s ease-in-out infinite;
+}
 
 /* WordPress Specific */
 .wp-block-image {
