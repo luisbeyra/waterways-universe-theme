@@ -207,12 +207,12 @@ body {
 .gap-8 { gap: 2rem; }
 
 @media (min-width: 768px) {
-  .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .md\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (min-width: 1024px) {
-  .lg\\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* Position Utilities */
@@ -237,11 +237,11 @@ body {
 
 .bg-gradient-ocean { background: var(--gradient-ocean); }
 
-/* Background opacity variants */
-.bg-background\\/60 { background-color: hsl(var(--background) / 0.6); }
-.bg-card\\/80 { background-color: hsl(var(--card) / 0.8); }
-.bg-background\\/20 { background-color: hsl(var(--background) / 0.2); }
-.bg-accent\\/80 { background-color: hsl(var(--accent) / 0.8); }
+/* Background opacity variants - FIXED ESCAPING */
+.bg-background\/60 { background-color: hsl(var(--background) / 0.6); }
+.bg-card\/80 { background-color: hsl(var(--card) / 0.8); }
+.bg-background\/20 { background-color: hsl(var(--background) / 0.2); }
+.bg-accent\/80 { background-color: hsl(var(--accent) / 0.8); }
 
 /* Text Colors */
 .text-foreground { color: hsl(var(--foreground)); }
@@ -261,9 +261,9 @@ body {
 .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
 
 @media (min-width: 768px) {
-  .md\\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
-  .md\\:text-5xl { font-size: 3rem; line-height: 1; }
-  .md\\:h-32 { height: 8rem; }
+  .md\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
+  .md\:text-5xl { font-size: 3rem; line-height: 1; }
+  .md\:h-32 { height: 8rem; }
 }
 
 /* Font Weights */
@@ -317,8 +317,8 @@ body {
 .rounded-lg { border-radius: 0.5rem; }
 .rounded-full { border-radius: 9999px; }
 
-/* Border opacity variants */
-.border-border\\/20 { border-color: hsl(var(--border) / 0.2); }
+/* Border opacity variants - FIXED ESCAPING */
+.border-border\/20 { border-color: hsl(var(--border) / 0.2); }
 
 /* Display */
 .block { display: block; }
@@ -326,9 +326,9 @@ body {
 .hidden { display: none; }
 
 @media (min-width: 768px) {
-  .md\\:flex { display: flex; }
-  .md\\:hidden { display: none; }
-  .md\\:block { display: block; }
+  .md\:flex { display: flex; }
+  .md\:hidden { display: none; }
+  .md\:block { display: block; }
 }
 
 /* Heights */
@@ -367,7 +367,7 @@ body {
 
 /* Transform utilities - ESSENTIAL FOR HOVER EFFECTS */
 .transform { transform: var(--tw-transform); }
-.hover\\:scale-105:hover { transform: scale(1.05); }
+.hover\:scale-105:hover { transform: scale(1.05); }
 .scale-110 { transform: scale(1.1); }
 
 /* ANIMATION CLASSES - CRITICAL FOR HERO SECTION */
@@ -470,10 +470,10 @@ body {
 /* Shadow utilities - ESSENTIAL FOR DEPTH */
 .shadow-glow { box-shadow: var(--shadow-glow); }
 .shadow-card { box-shadow: var(--shadow-card); }
-.hover\\:shadow-glow:hover { box-shadow: var(--shadow-glow); }
-.hover\\:shadow-card:hover { box-shadow: var(--shadow-card); }
-.hover\\:shadow-\\[var\\(--shadow-glow\\)\\]:hover { box-shadow: var(--shadow-glow); }
-.hover\\:shadow-\\[var\\(--shadow-card\\)\\]:hover { box-shadow: var(--shadow-card); }
+.hover\:shadow-glow:hover { box-shadow: var(--shadow-glow); }
+.hover\:shadow-card:hover { box-shadow: var(--shadow-card); }
+.hover\:shadow-\[var\(--shadow-glow\)\]:hover { box-shadow: var(--shadow-glow); }
+.hover\:shadow-\[var\(--shadow-card\)\]:hover { box-shadow: var(--shadow-card); }
 
 /* Custom gradient utilities for sections */
 .from-primary { --tw-gradient-from: hsl(var(--primary)); }
@@ -486,24 +486,24 @@ body {
 .bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-to), var(--tw-gradient-from)); }
 
 /* Hover States - ESSENTIAL FOR INTERACTIVITY */
-.hover\\:text-accent:hover { color: hsl(var(--accent)); }
-.hover\\:bg-card:hover { background-color: hsl(var(--card)); }
-.hover\\:border-accent:hover { border-color: hsl(var(--accent)); }
+.hover\:text-accent:hover { color: hsl(var(--accent)); }
+.hover\:bg-card:hover { background-color: hsl(var(--card)); }
+.hover\:border-accent:hover { border-color: hsl(var(--accent)); }
 
 /* Group Hover Utilities - For Card Interactions */
-.group:hover .group-hover\\:scale-110 { transform: scale(1.1); }
-.group:hover .group-hover\\:opacity-40 { opacity: 0.4; }
-.group:hover .group-hover\\:bg-accent\\/80 { background-color: hsl(var(--accent) / 0.8); }
-.group:hover .group-hover\\:text-accent { color: hsl(var(--accent)); }
-.group:hover .group-hover\\:text-accent-foreground { color: hsl(var(--accent-foreground)); }
-.group:hover .group-hover\\:text-foreground { color: hsl(var(--foreground)); }
-.group:hover .group-hover\\:border-accent { border-color: hsl(var(--accent)); }
+.group:hover .group-hover\:scale-110 { transform: scale(1.1); }
+.group:hover .group-hover\:opacity-40 { opacity: 0.4; }
+.group:hover .group-hover\:bg-accent\/80 { background-color: hsl(var(--accent) / 0.8); }
+.group:hover .group-hover\:text-accent { color: hsl(var(--accent)); }
+.group:hover .group-hover\:text-accent-foreground { color: hsl(var(--accent-foreground)); }
+.group:hover .group-hover\:text-foreground { color: hsl(var(--foreground)); }
+.group:hover .group-hover\:border-accent { border-color: hsl(var(--accent)); }
 
 /* Responsive flex utilities */
 @media (min-width: 640px) {
-  .sm\\:flex-row { flex-direction: row; }
-  .sm\\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .sm\\:mt-0 { margin-top: 0; }
+  .sm\:flex-row { flex-direction: row; }
+  .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .sm\:mt-0 { margin-top: 0; }
 }
 
 /* Special WordPress Classes */

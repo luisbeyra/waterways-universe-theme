@@ -11,8 +11,8 @@ get_header(); ?>
     <?php 
     // Show hero section only on homepage
     if (is_home() || is_front_page()) {
-        // Include the hero section template part
-        get_template_part('template-parts/hero', 'section');
+        // Include the hero section template part - FORCE INCLUDE
+        include(get_template_directory() . '/template-parts/hero-section.php');
     } else {
         // For other pages, show standard content with proper spacing
         if (have_posts()) : ?>
