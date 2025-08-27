@@ -27,7 +27,6 @@
     <link rel="canonical" href="<?php echo get_permalink(); ?>">
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/css/waterways-theme.css" as="style">
     <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" as="image">
     
     <?php wp_head(); ?>
@@ -37,31 +36,25 @@
     <?php wp_body_open(); ?>
     
     <!-- Navigation Header -->
-    <header id="site-header" class="site-header fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-border">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
+    <header class="site-header">
+        <div class="container">
+            <div class="flex">
                 <!-- Logo -->
                 <div class="site-branding">
-                    <a href="<?php echo home_url(); ?>" class="flex items-center space-x-2 group">
+                    <a href="<?php echo home_url(); ?>">
                         <img 
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" 
-                            alt="<?php bloginfo('name'); ?> Logo" 
-                            class="h-14 w-auto transition-all duration-300 group-hover:scale-105 uppercase"
-                            width="auto" 
-                            height="56"
+                            alt="<?php bloginfo('name'); ?> Logo"
                         >
-                        <span class="text-xl font-bold bg-gradient-ocean bg-clip-text text-transparent">
-                            <?php bloginfo('name'); ?>
-                        </span>
                     </a>
                 </div>
 
-                <!-- Main Navigation -->
-                <nav id="main-navigation" class="main-navigation hidden md:flex items-center space-x-0">
+                <!-- Desktop Navigation -->
+                <nav class="main-navigation md:flex">
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'primary',
-                        'menu_class' => 'nav-menu flex space-x-0',
+                        'menu_class' => 'nav-menu',
                         'container' => false,
                         'fallback_cb' => 'waterways_default_menu',
                     ));
@@ -69,14 +62,14 @@
                 </nav>
 
                 <!-- CTA Button -->
-                <div class="header-cta hidden md:block">
-                    <a href="/tv-show" class="btn btn-primary bg-gradient-ocean hover:shadow-glow transition-all duration-300 px-6 py-2 rounded-md text-white font-medium">
+                <div class="header-cta md:block">
+                    <a href="<?php echo home_url('/tv-show'); ?>" class="btn btn-primary animate-glow">
                         Watch Trailer
                     </a>
                 </div>
 
                 <!-- Mobile Menu Toggle -->
-                <button id="mobile-menu-toggle" class="mobile-menu-toggle md:hidden text-foreground hover:text-accent">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle md:hidden">
                     <span class="sr-only">Toggle Menu</span>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -85,8 +78,8 @@
             </div>
 
             <!-- Mobile Navigation Menu -->
-            <div id="mobile-menu" class="mobile-menu md:hidden bg-background/98 backdrop-blur-md border-t border-border hidden">
-                <div class="px-4 pt-2 pb-4 space-y-1">
+            <div id="mobile-menu" class="mobile-menu md:hidden hidden">
+                <div class="px-4 space-y-1">
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'mobile',
@@ -96,7 +89,7 @@
                     ));
                     ?>
                     <div class="pt-2">
-                        <a href="/tv-show" class="btn btn-primary w-full bg-gradient-ocean hover:shadow-glow transition-all duration-300 block text-center py-2 rounded-md text-white font-medium">
+                        <a href="<?php echo home_url('/tv-show'); ?>" class="btn btn-primary w-full animate-glow">
                             Watch Trailer
                         </a>
                     </div>
@@ -104,3 +97,20 @@
             </div>
         </div>
     </header>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', function() {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+    });
+    </script>
