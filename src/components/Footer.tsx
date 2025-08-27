@@ -25,7 +25,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src={waterwaysLogo} alt="Waterways Logo" className="h-8 w-auto" />
+              <img src={waterwaysLogo} alt="Waterways Logo" className="h-11 w-auto" />
               
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
