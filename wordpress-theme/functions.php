@@ -45,19 +45,19 @@ add_action('after_setup_theme', 'waterways_theme_setup');
  * Enqueue Scripts and Styles
  */
 function waterways_enqueue_assets() {
-    // Theme stylesheet
+    // Main theme stylesheet
     wp_enqueue_style(
         'waterways-style',
-        get_template_directory_uri() . '/assets/css/waterways-theme.css',
+        get_stylesheet_uri(),
         array(),
         wp_get_theme()->get('Version')
     );
     
-    // Tailwind CSS
+    // Additional theme styles
     wp_enqueue_style(
-        'waterways-tailwind',
-        get_template_directory_uri() . '/assets/css/tailwind.css',
-        array(),
+        'waterways-additional',
+        get_template_directory_uri() . '/assets/css/waterways-theme.css',
+        array('waterways-style'),
         wp_get_theme()->get('Version')
     );
     
