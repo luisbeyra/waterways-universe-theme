@@ -35,7 +35,7 @@
 <body <?php body_class('min-h-screen bg-background'); ?>>
     <?php wp_body_open(); ?>
     
-    <!-- Header - Matches React Header Component Exactly -->
+    <!-- Header - Exact React Match -->
     <header class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-sm border-b border-border/20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
@@ -52,67 +52,82 @@
                 </div>
 
                 <!-- Desktop Navigation -->
-                <nav class="main-navigation md:flex">
+                <nav class="hidden md:flex items-center space-x-0">
                     <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'primary',
-                        'menu_class' => 'nav-menu',
-                        'container' => false,
-                        'fallback_cb' => 'waterways_default_menu',
-                    ));
+                    $navigation = array(
+                        'Home' => home_url('/'),
+                        'TV Show' => home_url('/tv-show/'),
+                        'Games' => home_url('/games/'),
+                        'Graphic Novel' => home_url('/graphic-novel/'),
+                        'Lessons' => home_url('/lessons/'),
+                        'About' => home_url('/about/'),
+                        'Contact' => home_url('/contact/')
+                    );
+                    
+                    $current_url = home_url(add_query_arg(array(), $GLOBALS['wp']->request));
+                    
+                    foreach ($navigation as $name => $url) {
+                        $is_active = ($current_url === rtrim($url, '/')) || (rtrim($current_url, '/') === rtrim($url, '/'));
+                        if ($name === 'Home' && (is_home() || is_front_page())) $is_active = true;
+                        
+                        $active_class = $is_active ? 'bg-primary text-primary-foreground shadow-[var(--shadow-glow)]' : 'text-foreground hover:text-accent';
+                        
+                        echo '<a href="' . esc_url($url) . '" class="px-3 py-2 rounded-md text-base font-medium uppercase transition-all duration-300 hover:bg-card hover:text-accent ' . $active_class . '">' . esc_html($name) . '</a>';
+                    }
                     ?>
                 </nav>
 
                 <!-- CTA Button -->
-                <div class="header-cta md:block">
-                    <a href="<?php echo home_url('/tv-show'); ?>" class="btn btn-primary animate-glow">
+                <div class="hidden md:block">
+                    <a href="<?php echo home_url('/tv-show/'); ?>" class="btn btn-primary bg-gradient-ocean hover:shadow-[var(--shadow-glow)] transition-all duration-300 inline-flex items-center px-4 py-2 rounded-md text-sm font-medium">
                         Watch Trailer
                     </a>
                 </div>
 
                 <!-- Mobile Menu Toggle -->
-                <button id="mobile-menu-toggle" class="mobile-menu-toggle md:hidden">
-                    <span class="sr-only">Toggle Menu</span>
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <div class="md:hidden">
+                    <button class="mobile-menu-toggle text-foreground hover:text-accent p-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                        <svg class="menu-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg class="close-icon w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
+        </div>
 
-            <!-- Mobile Navigation Menu -->
-            <div id="mobile-menu" class="mobile-menu md:hidden hidden">
-                <div class="px-4 space-y-1">
-                    <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'mobile',
-                        'menu_class' => 'mobile-nav-menu',
-                        'container' => false,
-                        'fallback_cb' => 'waterways_mobile_menu',
-                    ));
-                    ?>
-                    <div class="pt-2">
-                        <a href="<?php echo home_url('/tv-show'); ?>" class="btn btn-primary w-full animate-glow">
-                            Watch Trailer
-                        </a>
-                    </div>
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-menu hidden md:hidden bg-transparent backdrop-blur-sm border-t border-border/20">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <?php
+                foreach ($navigation as $name => $url) {
+                    $is_active = ($current_url === rtrim($url, '/')) || (rtrim($current_url, '/') === rtrim($url, '/'));
+                    if ($name === 'Home' && (is_home() || is_front_page())) $is_active = true;
+                    
+                    $active_class = $is_active ? 'bg-primary text-primary-foreground' : 'text-foreground hover:bg-card hover:text-accent';
+                    
+                    echo '<a href="' . esc_url($url) . '" class="block px-3 py-2 rounded-md text-lg font-medium uppercase transition-all duration-300 ' . $active_class . '">' . esc_html($name) . '</a>';
+                }
+                ?>
+                <div class="pt-2">
+                    <a href="<?php echo home_url('/tv-show/'); ?>" class="w-full bg-gradient-ocean hover:shadow-[var(--shadow-glow)] transition-all duration-300 inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-white">
+                        Watch Trailer
+                    </a>
                 </div>
             </div>
         </div>
     </header>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
+    function toggleMobileMenu() {
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuIcon = document.querySelector('.menu-icon');
+        const closeIcon = document.querySelector('.close-icon');
         
-        if (mobileToggle && mobileMenu) {
-            mobileToggle.addEventListener('click', function() {
-                if (mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('hidden');
-                } else {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        }
-    });
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    }
     </script>

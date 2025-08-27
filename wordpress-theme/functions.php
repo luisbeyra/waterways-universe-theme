@@ -45,7 +45,7 @@ add_action('after_setup_theme', 'waterways_theme_setup');
  * Enqueue Scripts and Styles
  */
 function waterways_enqueue_assets() {
-    // Main theme stylesheet
+    // Main theme stylesheet - MOST IMPORTANT
     wp_enqueue_style(
         'waterways-style',
         get_stylesheet_uri(),
@@ -53,7 +53,7 @@ function waterways_enqueue_assets() {
         wp_get_theme()->get('Version')
     );
     
-    // Theme JavaScript
+    // Theme JavaScript with mobile menu functionality
     wp_enqueue_script(
         'waterways-scripts',
         get_template_directory_uri() . '/assets/js/waterways-theme.js',
