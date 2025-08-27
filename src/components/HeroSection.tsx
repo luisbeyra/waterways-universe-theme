@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Play, Gamepad2, BookOpen, GraduationCap } from 'lucide-react';
 import heroBackground from '@/assets/hero-background.jpg';
+import waterwaysLogo from '@/assets/waterways-logo.png';
 import tvShowHero from '@/assets/tv-show-hero.jpg';
 import gamesHero from '@/assets/games-hero.jpg';
 import graphicNovelHero from '@/assets/graphic-novel-hero.jpg';
@@ -74,9 +75,11 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         {/* Main Heading */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-hero bg-clip-text text-transparent animate-slide-up">
-            WATERWAYS
-          </h1>
+          <img 
+            src={waterwaysLogo} 
+            alt="Waterways Logo" 
+            className="h-24 md:h-32 mx-auto mb-6 animate-slide-up"
+          />
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up">
             Where Science Fiction Meets STEM Education in the Heart of Florida's Mangrove Ecosystem
           </p>
