@@ -27,7 +27,7 @@
     <link rel="canonical" href="<?php echo get_permalink(); ?>">
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" as="image">
+    <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-logo.png" as="image">
     
     <?php wp_head(); ?>
 </head>
@@ -43,7 +43,7 @@
                 <div class="site-branding">
                     <a href="<?php echo home_url(); ?>">
                         <img 
-                            src="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" 
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/waterways-logo.png" 
                             alt="<?php bloginfo('name'); ?> Logo"
                         >
                     </a>

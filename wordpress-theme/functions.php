@@ -53,14 +53,6 @@ function waterways_enqueue_assets() {
         wp_get_theme()->get('Version')
     );
     
-    // Additional theme styles
-    wp_enqueue_style(
-        'waterways-additional',
-        get_template_directory_uri() . '/assets/css/waterways-theme.css',
-        array('waterways-style'),
-        wp_get_theme()->get('Version')
-    );
-    
     // Theme JavaScript
     wp_enqueue_script(
         'waterways-scripts',

@@ -1,116 +1,130 @@
 <?php
 /**
- * Template part for displaying the hero section with 4 main areas
- * Used on the homepage to showcase TV Show, Games, Graphic Novel, and Lessons
+ * Hero Section Template Part
+ * Displays the main hero section with 4 content areas - matches React version exactly
  */
 ?>
 
-<section class="hero-section relative" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <!-- Background Image with Overlay -->
-    <div class="hero-background absolute" style="top: 0; left: 0; right: 0; bottom: 0; background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-        <div class="absolute" style="top: 0; left: 0; right: 0; bottom: 0; background-color: hsl(var(--background) / 0.6); backdrop-filter: blur(4px);"></div>
+    <div 
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-background.jpg');"
+    >
+        <div class="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
     </div>
     
     <!-- Animated Elements -->
-    <div class="absolute" style="top: 0; left: 0; right: 0; bottom: 0;">
+    <div class="absolute inset-0">
         <?php for ($i = 0; $i < 20; $i++) : ?>
-            <div class="absolute animate-float" 
-                 style="width: 8px; height: 8px; background-color: hsl(var(--primary-glow)); border-radius: 50%; opacity: 0.3; left: <?php echo rand(0, 100); ?>%; top: <?php echo rand(0, 100); ?>%; animation-delay: <?php echo rand(0, 4); ?>s; animation-duration: <?php echo 3 + rand(0, 4); ?>s;"></div>
+            <div
+                class="absolute w-2 h-2 bg-primary-glow rounded-full animate-float opacity-30"
+                style="left: <?php echo rand(0, 100); ?>%; top: <?php echo rand(0, 100); ?>%; animation-delay: <?php echo rand(0, 4000); ?>ms; animation-duration: <?php echo rand(3000, 7000); ?>ms;"
+            ></div>
         <?php endfor; ?>
     </div>
 
     <!-- Content -->
-    <div class="relative z-10 container" style="padding-top: 5rem;">
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <!-- Main Heading -->
-        <div style="text-align: center; margin-bottom: 4rem;">
-            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                <img 
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/WaterWays-Logo-Web.png" 
-                    alt="<?php bloginfo('name'); ?> Logo" 
-                    class="animate-slide-up"
-                    style="height: 6rem; width: auto;"
-                >
-            </div>
-            <p class="text-xl text-muted-foreground animate-slide-up" style="max-width: 48rem; margin: 0 auto; line-height: 1.625;">
-                <?php 
-                $hero_description = get_theme_mod('hero_description', 'Where Science Fiction Meets STEM Education in the Heart of Florida\'s Mangrove Ecosystem');
-                echo esc_html($hero_description); 
-                ?>
+        <div class="text-center mb-16">
+            <?php
+            $custom_logo_id = get_theme_mod('custom_logo');
+            if ($custom_logo_id) {
+                $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+                echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '" class="h-24 md:h-32 mx-auto mb-6 animate-slide-up" />';
+            } else {
+                echo '<img src="' . get_template_directory_uri() . '/assets/images/waterways-logo.png" alt="' . get_bloginfo('name') . '" class="h-24 md:h-32 mx-auto mb-6 animate-slide-up" />';
+            }
+            ?>
+            
+            <p class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up">
+                Where Science Fiction Meets STEM Education in the Heart of Florida's Mangrove Ecosystem
             </p>
-            <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; justify-content: center; align-items: center;">
-                <a href="<?php echo home_url('/tv-show'); ?>" class="btn btn-primary animate-glow" style="font-size: 1.125rem; padding: 1rem 2rem; display: inline-flex; align-items: center; justify-content: center;">
-                    <svg style="margin-right: 0.5rem; width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-9-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+                <a href="<?php echo home_url('/tv-show'); ?>" class="btn btn-primary bg-gradient-ocean hover:shadow-glow text-lg px-8 py-4 animate-glow inline-flex items-center justify-center">
+                    <svg class="mr-2" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
                     </svg>
                     Watch Trailer
                 </a>
-                <a href="#explore" class="btn" style="font-size: 1.125rem; padding: 1rem 2rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid hsl(var(--accent)); color: hsl(var(--accent)); background: transparent;">
+                <a href="<?php echo home_url('/about'); ?>" class="btn btn-outline border-accent text-accent hover:bg-accent hover:text-accent-foreground text-lg px-8 py-4 inline-flex items-center justify-center">
                     Explore Universe
                 </a>
             </div>
         </div>
 
         <!-- Four Hero Sections Grid -->
-        <div class="grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 72rem; margin: 0 auto;" id="explore">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <?php
+            // Define hero sections - matching React version exactly
             $hero_sections = array(
                 array(
                     'title' => 'TV Show',
                     'description' => 'Experience the sci-fi mystery at Waterways Academy',
+                    'icon' => 'tv',
                     'image' => get_template_directory_uri() . '/assets/images/tv-show-hero.jpg',
                     'link' => home_url('/tv-show'),
-                    'gradient' => 'linear-gradient(to bottom right, hsl(var(--primary)), hsl(var(--accent)))'
+                    'gradient' => 'from-primary to-accent'
                 ),
                 array(
                     'title' => 'Games',
                     'description' => 'Educational gaming in the mangrove ecosystem',
+                    'icon' => 'gamepad',
                     'image' => get_template_directory_uri() . '/assets/images/games-hero.jpg',
                     'link' => home_url('/games'),
-                    'gradient' => 'linear-gradient(to bottom right, hsl(var(--seaweed)), hsl(var(--primary)))'
+                    'gradient' => 'from-seaweed to-primary'
                 ),
                 array(
                     'title' => 'Graphic Novel',
                     'description' => 'Interactive comic book experience',
+                    'icon' => 'book',
                     'image' => get_template_directory_uri() . '/assets/images/graphic-novel-hero.jpg',
                     'link' => home_url('/graphic-novel'),
-                    'gradient' => 'linear-gradient(to bottom right, hsl(var(--coral)), hsl(var(--accent)))'
+                    'gradient' => 'from-coral to-accent'
                 ),
                 array(
                     'title' => 'Lessons',
                     'description' => 'STEM curriculum for the classroom',
+                    'icon' => 'graduation',
                     'image' => get_template_directory_uri() . '/assets/images/lessons-hero.jpg',
                     'link' => home_url('/lessons'),
-                    'gradient' => 'linear-gradient(to bottom right, hsl(var(--accent)), hsl(var(--deep-blue)))'
+                    'gradient' => 'from-accent to-deep-blue'
                 )
             );
-
-            foreach ($hero_sections as $section) : ?>
-                <a href="<?php echo esc_url($section['link']); ?>" class="hero-card" style="display: block; text-decoration: none;">
-                    <div class="relative" style="overflow: hidden; height: 20rem; background-color: hsl(var(--card) / 0.8); backdrop-filter: blur(4px); border: 1px solid hsl(var(--border)); border-radius: 0.5rem; transition: var(--transition-smooth); cursor: pointer;">
+            ?>
+            
+            <?php foreach ($hero_sections as $index => $section) : ?>
+                <a href="<?php echo esc_url($section['link']); ?>" class="group">
+                    <div class="relative overflow-hidden h-80 bg-card/80 backdrop-blur-sm border border-border hover:border-accent transition-all duration-500 transform hover:scale-105 hover:shadow-card animate-slide-up rounded-lg">
                         <!-- Background Image -->
-                        <div class="absolute" style="top: 0; left: 0; right: 0; bottom: 0; background-image: url('<?php echo esc_url($section['image']); ?>'); background-size: cover; background-position: center; transition: transform 0.7s;">
-                            <div class="absolute" style="top: 0; left: 0; right: 0; bottom: 0; background: <?php echo esc_attr($section['gradient']); ?>; opacity: 0.6; transition: opacity 0.5s;"></div>
+                        <div 
+                            class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
+                            style="background-image: url('<?php echo esc_url($section['image']); ?>');"
+                        >
+                            <div class="absolute inset-0 bg-gradient-to-t <?php echo esc_attr($section['gradient']); ?> opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
                         </div>
                         
                         <!-- Content Overlay -->
-                        <div class="relative z-10" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem;">
+                        <div class="relative z-10 h-full flex flex-col justify-between p-6">
                             <!-- Icon -->
-                            <div style="display: flex; justify-content: center;">
-                                <div style="width: 4rem; height: 4rem; background-color: hsl(var(--background) / 0.2); backdrop-filter: blur(4px); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition-smooth);">
-                                    <?php
-                                    // Icon based on section title
-                                    switch ($section['title']) {
-                                        case 'TV Show':
-                                            echo '<svg style="width: 2rem; height: 2rem; color: hsl(var(--foreground));" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-9-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+                            <div class="flex justify-center">
+                                <div class="w-16 h-16 bg-background/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-accent/80 transition-all duration-300">
+                                    <?php 
+                                    // SVG icons for each section
+                                    switch ($section['icon']) {
+                                        case 'tv':
+                                            echo '<svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="text-foreground group-hover:text-accent-foreground"><path d="M8 5v14l11-7z"/></svg>';
                                             break;
-                                        case 'Games':
-                                            echo '<svg style="width: 2rem; height: 2rem; color: hsl(var(--foreground));" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a1 1 0 01-1-1V9a1 1 0 011-1h1a2 2 0 100-4H4a1 1 0 01-1-1V4a1 1 0 011-1h3a1 1 0 011 1v1z"></path></svg>';
+                                        case 'gamepad':
+                                            echo '<svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="text-foreground group-hover:text-accent-foreground"><path d="M6 9a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>';
                                             break;
-                                        case 'Graphic Novel':
-                                            echo '<svg style="width: 2rem; height: 2rem; color: hsl(var(--foreground));" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>';
+                                        case 'book':
+                                            echo '<svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="text-foreground group-hover:text-accent-foreground"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6z"/></svg>';
                                             break;
-                                        case 'Lessons':
-                                            echo '<svg style="width: 2rem; height: 2rem; color: hsl(var(--foreground));" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>';
+                                        case 'graduation':
+                                            echo '<svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="text-foreground group-hover:text-accent-foreground"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6L23 9l-11-6zM18.82 9L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>';
                                             break;
                                     }
                                     ?>
@@ -118,14 +132,17 @@
                             </div>
                             
                             <!-- Text Content -->
-                            <div style="text-align: center;">
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.5rem; transition: color 0.3s;">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
                                     <?php echo esc_html($section['title']); ?>
                                 </h3>
-                                <p style="color: hsl(var(--muted-foreground)); transition: color 0.3s;">
+                                <p class="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                                     <?php echo esc_html($section['description']); ?>
                                 </p>
                             </div>
+                            
+                            <!-- Hover Effect Border -->
+                            <div class="absolute inset-0 border-2 border-transparent group-hover:border-accent transition-colors duration-300 rounded-lg"></div>
                         </div>
                     </div>
                 </a>
@@ -133,46 +150,10 @@
         </div>
 
         <!-- Additional Info -->
-        <div style="text-align: center; margin-top: 4rem;" class="animate-slide-up">
-            <p style="font-size: 1.125rem; color: hsl(var(--muted-foreground));">
+        <div class="text-center mt-16 animate-slide-up">
+            <p class="text-lg text-muted-foreground">
                 A groundbreaking series featuring guest experts, interactive curriculum, and immersive gaming experiences
             </p>
         </div>
     </div>
 </section>
-
-<style>
-.hero-card:hover .relative {
-    transform: scale(1.05);
-    border-color: hsl(var(--accent));
-    box-shadow: var(--shadow-card);
-}
-
-.hero-card:hover .absolute div {
-    opacity: 0.4;
-}
-
-.hero-card:hover h3 {
-    color: hsl(var(--accent));
-}
-
-.hero-card:hover p {
-    color: hsl(var(--foreground));
-}
-
-@media (min-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-    
-    .flex {
-        flex-direction: row;
-    }
-}
-</style>
