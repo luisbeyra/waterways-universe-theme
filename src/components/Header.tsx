@@ -34,7 +34,7 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <img src={waterwaysLogo} alt="Waterways Logo" className="h-8 w-auto transition-all duration-300 group-hover:scale-105" />
+            <img src={waterwaysLogo} alt="Waterways Logo" className="h-11 w-auto transition-all duration-300 group-hover:scale-105" />
             
           </Link>
 
