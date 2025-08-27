@@ -10,17 +10,10 @@ const Footer = () => {
     { icon: Youtube, href: '#', label: 'YouTube' },
   ];
 
-  const quickLinks = [
-    { name: 'TV Show', href: '/tv-show' },
-    { name: 'Games', href: '/games' },
-    { name: 'Graphic Novel', href: '/graphic-novel' },
-    { name: 'Lessons', href: '/lessons' },
-  ];
-
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -49,23 +42,6 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-foreground">Quick Links</h3>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-accent transition-colors duration-300 text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Educational Partners */}
