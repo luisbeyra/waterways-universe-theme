@@ -1,0 +1,75 @@
+/*
+Theme Name: Waterways Miami Theme
+Description: A revolutionary sci-fi series theme set in a fictional Florida K-12 school, seamlessly integrating entertainment with STEM education. Converted from React static website.
+Author: Your Name
+Version: 1.0
+Text Domain: waterways
+Domain Path: /languages
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: education, sci-fi, STEM, responsive, dark-mode
+
+This theme supports: custom-logo, custom-menu, post-thumbnails, custom-background, custom-colors
+*/
+
+/* Main theme styles will be enqueued via functions.php */
+/* This file serves as the WordPress theme identifier */
+
+/* Basic WordPress required styles */
+.alignleft {
+    float: left;
+    margin: 0 1em 1em 0;
+}
+
+.alignright {
+    float: right;
+    margin: 0 0 1em 1em;
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption-text {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.screen-reader-text {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* WordPress Gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+}
+
+.gallery-item {
+    flex: 1 0 auto;
+    padding: 0.5rem;
+}
+
+/* WordPress Blocks Support */
+.wp-block-group {
+    margin: 1rem 0;
+}
+
+.wp-block-separator {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 2rem 0;
+}
