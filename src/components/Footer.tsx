@@ -1,46 +1,41 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import waterwaysLogo from '@/assets/waterways-logo.png';
-
 const Footer = () => {
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
-  ];
-
-  return (
-    <footer className="bg-card border-t border-border">
+  const socialLinks = [{
+    icon: Facebook,
+    href: '#',
+    label: 'Facebook'
+  }, {
+    icon: Twitter,
+    href: '#',
+    label: 'Twitter'
+  }, {
+    icon: Instagram,
+    href: '#',
+    label: 'Instagram'
+  }, {
+    icon: Youtube,
+    href: '#',
+    label: 'YouTube'
+  }];
+  return <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src={waterwaysLogo} 
-                alt="Waterways Logo" 
-                className="h-8 w-auto"
-              />
-              <span className="text-xl font-bold bg-gradient-ocean bg-clip-text text-transparent">
-                WATERWAYS
-              </span>
+              <img src={waterwaysLogo} alt="Waterways Logo" className="h-8 w-auto" />
+              
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               A revolutionary sci-fi series set in a fictional Florida K-12 school, 
               seamlessly integrating entertainment with STEM education.
             </p>
             <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="text-muted-foreground hover:text-accent transition-colors duration-300 hover:scale-110 transform"
-                  aria-label={social.label}
-                >
+              {socialLinks.map(social => <a key={social.label} href={social.href} className="text-muted-foreground hover:text-accent transition-colors duration-300 hover:scale-110 transform" aria-label={social.label}>
                   <social.icon size={20} />
-                </a>
-              ))}
+                </a>)}
             </div>
           </div>
 
@@ -98,8 +93,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
